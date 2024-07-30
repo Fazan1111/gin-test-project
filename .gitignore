@@ -1,0 +1,4 @@
+upload/
+.env
+public/
+.DS_Store

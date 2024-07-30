@@ -1,0 +1,114 @@
+basePath: /
+definitions:
+  authDto.LoginDto:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  authDto.RegisterDto:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    type: object
+  authDto.RegistorResp:
+    properties:
+      _id:
+        type: string
+      accessToken:
+        type: string
+      createdAt:
+        type: string
+      email:
+        type: string
+      isDeleted:
+        type: boolean
+      name:
+        type: string
+      refreshToken:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Gin Swagger Example API
+  version: "1.0"
+paths:
+  /api/auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login to app
+      parameters:
+      - description: Login
+        in: body
+        name: register
+        required: true
+        schema:
+          $ref: '#/definitions/authDto.LoginDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/authDto.RegistorResp'
+      summary: Login
+      tags:
+      - Auth
+  /api/auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Register new account
+      parameters:
+      - description: Register new account
+        in: body
+        name: register
+        required: true
+        schema:
+          $ref: '#/definitions/authDto.RegisterDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+      summary: Register
+      tags:
+      - Auth
+  /api/users:
+    get:
+      consumes:
+      - application/json
+      description: Gest list user
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ok
+          schema:
+            type: string
+      summary: Get users
+      tags:
+      - User
+swagger: "2.0"
